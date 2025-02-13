@@ -15,11 +15,13 @@ const winner = (team1, team2, [scoreTeam1, scoreTeam2]) =>
   scoreTeam1 === scoreTeam2 ? "-" :
   scoreTeam1 > scoreTeam2 ? team1 : team2;
 
+const getScore = ([scoreTeam1, scoreTeam2]) => `${scoreTeam1} - ${scoreTeam2}`;
+
 const getMatchDetails = (matches) =>
   matches.map(({ date, team1, team2, score }) => ({
   date: date || "N/A",
   team1: team1 || "N/A",
-  ft: score?.ft || [0, 0],
+  ft: getScore(score?.ft) || "0 - 0",
   team2: team2 || "N/A",
   winningTeam: winner(team1, team2, score?.ft)
 }));
